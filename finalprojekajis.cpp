@@ -23,12 +23,12 @@ void CLEAR_SCREEN(){
 
 char PRINT_TABLE_HEAD(){
 	printf("================================================================================\n");
-	printf("| %-2s | %-15s | %-9s | %-10s | %-10s | %-18s |\n", "No", "Nama hp", "Kode Buku", "Stock Buku", "merek", "Tanggal Peminjaman");
+	printf("| %-2s | %-15s | %-9s | %-10s | %-10s | %-18s |\n", "No", "Nama hp", "Barcode hp", "Stock hp", "merek", "harga hp");
 	printf("================================================================================\n");
 }
 
 char PRINT_TABLE_BODY(int number, char* hp, char* kode, char* stock, char* merek, char* price){
-	printf("| %-2d | %-15s | %-9s | %-10s | %-10s | %-18s |\n", number, hp, kode, stock, merek, price);
+	printf("| %-2d | %-15s | %-9s | %-10s | %-10s | Rp. %-18s |\n", number, hp, kode, stock, merek, price);
 }
 
 char PRINT_TABLE_FOOTER(){
@@ -101,7 +101,7 @@ void READ_BY_NAME(){
 	PRINT_TABLE_FOOTER();
 }
 
-void READ_BY_PINJAM(){
+void READ_BY_PRICE(){
 	READ_DEFAULT();
 	
 	int j, i, pinjam, pinjam2;
@@ -149,17 +149,17 @@ void SEARCH_listhp(){
 	int size = sizeof(listhp)/sizeof(listhp[0]);
 	int i, status;
 	
-	printf("Masukan kode buku: ");
+	printf("Masukan kode hp: ");
 	scanf("%s", &keyword);
 	
 	status = 0;
 	for(i=0; i<size; i++){
 		if(strcasecmp(keyword, listhp[i].kode) == 0){
 			printf("\nNama hp: %s", listhp[i].hp);
-			printf("\nKode Buku: %s", listhp[i].kode);
+			printf("\nKode hp: %s", listhp[i].kode);
 			printf("\nStock: %s", listhp[i].stock);
-			printf("\merek: %s", listhp[i].merek);
-			printf("\nTanggal Peminjaman Terakhir: %s", listhp[i].price);
+			printf("\nmerek: %s", listhp[i].merek);
+			printf("\nharga: %s", listhp[i].price);
 			status = 1;
 			break;
 		}
@@ -173,8 +173,8 @@ void SEARCH_listhp(){
 
 void MAIN_MENU(){
 	printf("1. List hp\n");
-	printf("2. Cari Buku\n");
-	printf("3. Urutkan Buku\n");
+	printf("2. Cari hp\n");
+	printf("3. Urutkan hp\n");
 	printf("4. Keluar\n");
 }
 
@@ -182,8 +182,8 @@ void SORT_MENU(){
 	char anw_user;
 	do{
 		CLEAR_SCREEN();
-		printf("1. Urutkan Berdasarkan hp \n");
-		printf("2. Urutkan Berdasarkan Tanggal Pinjam\n");
+		printf("1. Urutkan Berdasarkan nama hp \n");
+		printf("2. Urutkan Berdasarkan harga\n");
 		printf("3. Kembali\n");
 		
 		do{
@@ -193,7 +193,7 @@ void SORT_MENU(){
 		}while((anw_user!='1')&&(anw_user!='2')&&(anw_user!='3'));
 		switch(anw_user){
 			case '1': CLEAR_SCREEN(); READ_BY_NAME(); break;
-			case '2': CLEAR_SCREEN(); READ_BY_PINJAM(); break;
+			case '2': CLEAR_SCREEN(); READ_BY_PRICE(); break;
 		};
 		if(anw_user!='3')
 			getche();
