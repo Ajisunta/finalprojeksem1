@@ -15,7 +15,7 @@ struct stc_hp{
 	char stock[8];		
 	char merek[20];
 	char price[30];	
-}listhp[100];					
+}listhp[6];					
 
 void CLEAR_SCREEN(){
 	if (system("CLS")) system("clear");
@@ -39,9 +39,8 @@ char PRINT_TABLE_FOOTER(){
 void READ_DEFAULT(){
 	int i = 0;
 	FILE *f_listhp = fopen("data.txt", "r");
-	PRINT_TABLE_HEAD();
 	while((fscanf(f_listhp, "%s %s %s %s %s", &listhp[i].hp, &listhp[i].kode, &listhp[i].stock, &listhp[i].price,  &listhp[i].merek))!=EOF){
-		PRINT_TABLE_BODY(i+1, listhp[i].hp, listhp[i].kode, listhp[i].stock, listhp[i].merek, listhp[i].price);
+		
 		i++;
 	}
 }
@@ -51,8 +50,10 @@ void READ_BY_DEFAULT(){
 	
 	int i = 0;
 	int size = sizeof(listhp)/sizeof(listhp[0]);
-		
-	
+	PRINT_TABLE_HEAD();	
+	for(i = 0; i < size; i++) {
+		PRINT_TABLE_BODY(i+1, listhp[i].hp, listhp[i].kode, listhp[i].stock, listhp[i].merek, listhp[i].price);
+	}
 	PRINT_TABLE_FOOTER();
 }
 
