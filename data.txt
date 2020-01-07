@@ -1,0 +1,6 @@
+IPhoneXI  032	 3  23000000	 Apple
+IPhoneXR  921	 10  14000000	 Apple
+SamsungGalaxyS9  214	 14  18500000	 Samsung
+MiNote10Pro  958	 1  6990000	 Xiaomi
+MiA1  552  2  700000  Xiaomi 
+VivoZ1	 439	 8  5000000	 Vivo 

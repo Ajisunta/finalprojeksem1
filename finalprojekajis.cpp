@@ -11,7 +11,7 @@
 
 struct stc_hp{
 	char hp[77];   	
-	char kode[69];`
+	char kode[69];
 	char stock[8];		
 	char price[20];
 	char merek[30];	
@@ -28,7 +28,7 @@ char PRINT_TABLE_HEAD(){
 }
 
 char PRINT_TABLE_BODY(int number, char* hp, char* kode, char* stock, char* merek, char* price){
-	printf("| %-2d | %-15s | %-9s | %-10s | %-10s | Rp. %-18s |\n", number, hp, kode, stock, merek, price);
+	printf("| %-2d | %-15s | %-9s | %-10s | Rp. %-10s |  %-18s |\n", number, hp, kode, stock, merek, price);
 }
 
 char PRINT_TABLE_FOOTER(){
@@ -204,7 +204,7 @@ int main(){
 	char anw_user;
 	do{
 		CLEAR_SCREEN();
-		printf("PEMINJAMAN BUKU OFFLINE\n\n");
+		printf("TOKO HP BINUSIAN\n\n");
 		MAIN_MENU();
 		
 		do{
