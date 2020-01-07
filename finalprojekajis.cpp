@@ -13,9 +13,9 @@ struct stc_hp{
 	char hp[77];   	
 	char kode[69];
 	char stock[8];		
-	char price[20];
-	char merek[30];	
-}listhp[6];					
+	char merek[20];
+	char price[30];	
+}listhp[100];					
 
 void CLEAR_SCREEN(){
 	if (system("CLS")) system("clear");
@@ -23,12 +23,12 @@ void CLEAR_SCREEN(){
 
 char PRINT_TABLE_HEAD(){
 	printf("================================================================================\n");
-	printf("| %-2s | %-15s | %-9s | %-10s | %-10s | %-18s |\n", "No", "Nama hp", "Barcode hp", "Stock hp", "merek", "harga hp");
+	printf("| %-2s | %-15s | %-9s | %-10s | %-18s | %-10s |\n", "No", "Nama hp", "Barcode hp", "Stock hp", "harga hp", "merek");
 	printf("================================================================================\n");
 }
 
 char PRINT_TABLE_BODY(int number, char* hp, char* kode, char* stock, char* merek, char* price){
-	printf("| %-2d | %-15s | %-9s | %-10s | Rp. %-10s |  %-18s |\n", number, hp, kode, stock, merek, price);
+	printf("| %-2d | %-15s | %-9s | %-10s | Rp. %-18s |  %-10s |\n", number, hp, kode, stock, price, merek);
 }
 
 char PRINT_TABLE_FOOTER(){
@@ -39,9 +39,9 @@ char PRINT_TABLE_FOOTER(){
 void READ_DEFAULT(){
 	int i = 0;
 	FILE *f_listhp = fopen("data.txt", "r");
-	
-	while((fscanf(f_listhp, "%s %s %s %s %s", &listhp[i].hp, &listhp[i].kode, &listhp[i].stock, &listhp[i].merek,  &listhp[i].price))!=EOF){
-		
+	PRINT_TABLE_HEAD();
+	while((fscanf(f_listhp, "%s %s %s %s %s", &listhp[i].hp, &listhp[i].kode, &listhp[i].stock, &listhp[i].price,  &listhp[i].merek))!=EOF){
+		PRINT_TABLE_BODY(i+1, listhp[i].hp, listhp[i].kode, listhp[i].stock, listhp[i].merek, listhp[i].price);
 		i++;
 	}
 }
@@ -51,11 +51,7 @@ void READ_BY_DEFAULT(){
 	
 	int i = 0;
 	int size = sizeof(listhp)/sizeof(listhp[0]);
-	PRINT_TABLE_HEAD();
-	
-	for(i=0; i<size; i++){
-		PRINT_TABLE_BODY(i+1, listhp[i].hp, listhp[i].kode, listhp[i].stock, listhp[i].merek, listhp[i].price);
-	}
+		
 	
 	PRINT_TABLE_FOOTER();
 }
