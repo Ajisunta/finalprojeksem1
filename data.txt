@@ -7,4 +7,4 @@ VivoZ1 439 8 10000000 Vivo
 IphoneX 490 10 10000002 Apple
 IphoneXI 942 10 10000001 Apple
 IphoneXX 949 9 10000000 Apple
-Anjing 930 10 100000 Fawaanjing
+Realme 031 6 400000000 realme
