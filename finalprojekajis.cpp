@@ -40,21 +40,23 @@ char PRINT_TABLE_FOOTER(){
 
 void READ_DEFAULT(){
 	int i = 0;
-	FILE *f_listhp = fopen("data.txt", "r");
-	while((fscanf(f_listhp, "%s %s %s %s %s", &listhp[i].hp, &listhp[i].kode, &listhp[i].stock, &listhp[i].price,  &listhp[i].merek))!=EOF){
+		f_menu = fopen("data.txt", "r");
+	while((fscanf(f_menu, "%s %s %s %s %s", &listhp[i].hp, &listhp[i].kode, &listhp[i].stock, &listhp[i].price,  &listhp[i].merek))!=EOF){
 		
 		i++;
 	}
 }
 
 void READ_BY_DEFAULT(){
-	READ_DEFAULT();
+//	READ_DEFAULT();
 	
 	int i = 0;
 //	int size = sizeof(listhp)/sizeof(listhp[0]);
-	PRINT_TABLE_HEAD();	
-	for(i = 0; i < sizeof(f_menu); i++) {
+	f_menu = fopen("data.txt", "r");
+	PRINT_TABLE_HEAD();
+	while((fscanf(f_menu, "%s %s %s %s %s", &listhp[i].hp, &listhp[i].kode, &listhp[i].stock, &listhp[i].price,  &listhp[i].merek))!=EOF){
 		PRINT_TABLE_BODY(i+1, listhp[i].hp, listhp[i].kode, listhp[i].stock, listhp[i].merek, listhp[i].price);
+		i++;
 	}
 	PRINT_TABLE_FOOTER();
 }
@@ -64,7 +66,7 @@ void READ_BY_NAME(){
 	
 	int j, i;
 	char hp_temp[69], kode_temp[69], stock_temp[69], merek_temp[69], price_temp[69];
-//	int size = sizeof(listhp)/sizeof(listhp[0]);
+	int size = sizeof(listhp);
 	PRINT_TABLE_HEAD();
 	
 	for(i=0; i<sizeof(f_menu); i++){
@@ -142,6 +144,7 @@ void READ_BY_PRICE(){
 }
 
 void SEARCH_listhp(){
+	f_menu = fopen("data.txt", "r");
 	READ_DEFAULT();
 	
 	char keyword[69];
@@ -216,6 +219,7 @@ void ADD_DATA() {
 		printf("\nInput price:"); fflush(stdin);gets(listhp[i].price);
 		
 		fprintf(f_menu, "%s %s %s %s %s\n",listhp[i].hp, listhp[i].kode, listhp[i].stock, listhp[i].price, listhp[i].merek);
+		i++;
 		do {
 			fflush(stdin);
 			printf("Apakah anda ingin menambah data item lagi ? [Y/N] : ");
